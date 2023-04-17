@@ -1,13 +1,35 @@
 import { FC, useState } from 'react'
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import styles from './authorizeForm.module.scss'
+import { setCookie } from 'nookies'
+import { UserService } from '@/services/user.service'
+import { useAppDispatch } from '@/store/hooks'
+import { setUserData } from '@/store/slices/user'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/store'
+import { IUser } from '@/services/types'
+import { useRouter } from 'next/router'
 
 const AuthorizeForm: FC = () => {
-
-   const [email, setEmail] = useState('');
+   const router = useRouter()
+   const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
-   const user = true;
+
+   const dispatch = useAppDispatch()
+
+   const onSubmit = async () => {
+      try {
+         const userData = await UserService.authorize({ email: email, password: password })
+         dispatch(setUserData(userData))
+         router.push('/')
+         console.log(userData)
+      } catch (error) {
+         alert(error)
+         console.log(error)
+      }
+   }
+
 
    return <motion.div className={styles.form}
       initial={{ y: 20, opacity: 0 }}
@@ -33,7 +55,7 @@ const AuthorizeForm: FC = () => {
       </div>
 
       <div className={styles.cont}>
-         <button className={styles.btn} onClick={() => 1}>Войти</button>
+         <button className={styles.btn} onClick={() => onSubmit()}>Войти</button>
 
          <p className={styles.answer}>Нет аккаунта? <Link href="/registration" className={styles.link}> Зарегестрируйся</Link>
          </p>

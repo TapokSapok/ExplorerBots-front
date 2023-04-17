@@ -1,20 +1,30 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
-import { FC, useState } from 'react'
-import styles from './HeaderProfile.module.scss';
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
+import { FC, useEffect, useState } from 'react'
+import styles from './HeaderProfile.module.scss'
+import { destroyCookie } from 'nookies'
+import { setUserData } from '@/store/slices/user'
+import LinkItem from './linkItem/LinkItem'
 
 const NavProfile: FC = () => {
 
-   const user = { isAuth: true };
-   const [showProfile, setShowProfile] = useState(false)
+   const userData = useAppSelector(state => state.user.data)
+   const dispatch = useAppDispatch()
+   const [showProfile, setShowProfile] = useState<boolean>(false)
+
+   const logout = () => {
+      destroyCookie(null, 'authToken')
+      dispatch(setUserData(null))
+   }
 
    return <div className={styles.profile}>
-      {user.isAuth ?
+      {userData ?
          <div className={styles.profile_container} onClick={() => setShowProfile(!showProfile)} style={showProfile ? { marginTop: '2px' } : {}}>
             <img className={styles.picture} src="https://cs8.pikabu.ru/post_img/2016/03/01/7/1456831941127977028.jpg" alt="" />
             <div className={styles.info}>
-               <p className={styles.username}>SapokTapok</p>
-               <span className={styles.balance}>123,0 ₽</span>
+               <p className={styles.username}>{userData.username}</p>
+               <span className={styles.balance}>{userData.balance} ₽</span>
             </div>
          </div>
          :
@@ -33,19 +43,13 @@ const NavProfile: FC = () => {
                transition={{ duration: 0.08 }}
                exit={{ x: 20, opacity: 0 }}
             >
+               {userData?.role === 'ADMIN' &&
+                  <LinkItem href='/admin-panel' title='Админ панель' onclick={setShowProfile} state={!showProfile} />
+               }
+               <LinkItem href='/profile' title='Профиль' onclick={setShowProfile} state={!showProfile} />
+               <LinkItem href='/replenish-balance' title='Пополнить баланс' onclick={setShowProfile} state={!showProfile} />
+               <LinkItem href='/authorize' title='Выйти из аккаунта' onclick={logout} />
 
-               <Link className={styles.item} href="/admin-panel" onClick={() => setShowProfile(!showProfile)}>
-                  {/* <span className={styles.title}>Админ панель</span> */} Админ Панель
-               </Link>
-               <Link className={styles.item} href="/profile" onClick={() => setShowProfile(!showProfile)}>
-                  {/* <span className={styles.title}>Профиль</span> */} Профиль
-               </Link>
-               <Link className={styles.item} href="/replenish-balance" onClick={() => setShowProfile(!showProfile)}>
-                  {/* <span className={styles.title}>Пополнить баланс</span> */} Пополнить баланс
-               </Link>
-               <span className={styles.item} onClick={() => setShowProfile(!showProfile)}>
-                  <p>Выйти из аккаунта</p>
-               </span>
             </motion.div>}
       </AnimatePresence>
 

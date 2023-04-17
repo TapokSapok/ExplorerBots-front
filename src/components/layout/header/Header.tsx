@@ -9,7 +9,7 @@ type Props = {}
 
 const Header = (props: Props) => {
 
-   const { pathname } = useRouter();
+   const { pathname } = useRouter()
 
    return (
       <header className={styles.header}>

@@ -1,15 +1,36 @@
+import { CreateUserDto, IUser, LoginUserDto } from './types'
 import axios from 'axios'
+import jwt_decode from "jwt-decode"
+import { setCookie } from 'nookies'
 
-const API_URL = 'https://jsonplaceholder.typicode.com'
-axios.defaults.baseURL = API_URL;
+// axios.defaults.baseURL = 'http:localhost:8080/api'
+
+const instance = axios.create({
+   baseURL: 'http://localhost:8080/api'
+})
 
 export const UserService = {
-   async getAll() {
-      // const { data } = await axios.get<IUser[]>('/users');
-      // return data
+   async registration(dto: CreateUserDto) {
+      const { data } = await instance.post('/auth/registration', dto)
+
+
+      setCookie(null, 'authToken', data.token, {
+         maxAge: 30 * 24 * 60 * 60, path: '/'
+      })
+
+      return this.tokenDecode(data.token)
    },
-   async getById(id: number) {
-      // const { data } = await axios.get<IUser>(`/users/${id}`)
-      // return data
+   async authorize(dto: LoginUserDto) {
+      const { data } = await instance.post('/auth/login', dto)
+
+      setCookie(null, 'authToken', data.token, {
+         maxAge: 30 * 24 * 60 * 60, path: '/'
+      })
+
+      return this.tokenDecode(data.token)
+   },
+   tokenDecode(token: string): IUser {
+      return jwt_decode(token)
    }
 }
+

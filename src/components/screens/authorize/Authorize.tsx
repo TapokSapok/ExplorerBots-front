@@ -1,5 +1,5 @@
 import Layout from '@/components/layout/Layout'
-import AuthorizeForm from '@/components/ui/authorizeForm/AuthorizeForm'
+import AuthorizeForm from '@/components/ui/forms/authorizeForm/AuthorizeForm'
 import { FC } from 'react'
 
 const Authorize: FC = () => {
