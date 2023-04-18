@@ -32,42 +32,44 @@ const RegistrationForm: FC = () => {
       }
    }
 
-   return <motion.div className={styles.form}
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.1 }}
-   >
-      <div className={styles.title_container}>
-         <p className={styles.title}>Регистрация аккаунта</p>
-      </div>
-
-
-      <div className={styles.form_field}>
-         <div className={styles.prefix}>
-            <img className={styles.svg} src='/auth/user.svg' alt="" />
+   return <div className={styles.screen}>
+      <motion.div className={styles.form}
+         initial={{ y: 20, opacity: 0 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.1 }}
+      >
+         <div className={styles.title_container}>
+            <p className={styles.title}>Регистрация аккаунта</p>
          </div>
-         <input className={styles.input} type="text" placeholder='* Никнейм' value={username} onChange={(e) => setUsername(e.target.value)} />
-      </div>
-      <div className={styles.form_field}>
-         <div className={styles.prefix}>
-            <img className={styles.svg} src='/auth/mail.svg' alt="" />
-         </div>
-         <input className={styles.input} type="text" placeholder='* Почта' value={email} onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <div className={styles.form_field}>
-         <div className={styles.prefix}>
-            <img className={styles.svg} src='/auth/lock.svg' alt="" />
-         </div>
-         <input className={styles.input} type="password" placeholder='* Пароль' value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
 
-      <div className={styles.cont}>
-         <button className={styles.btn} onClick={() => onSubmit()}>Зарегистрироваться</button>
-         <p className={styles.answer}>Есть аккаунт? <Link href="/authorize" className={styles.link}>Авторизируйся</Link>
-         </p>
-      </div>
 
-   </motion.div >
+         <div className={styles.form_field}>
+            <div className={styles.prefix}>
+               <img className={styles.svg} src='/auth/user.svg' alt="" />
+            </div>
+            <input className={styles.input} type="text" placeholder='* Никнейм' value={username} onChange={(e) => setUsername(e.target.value)} />
+         </div>
+         <div className={styles.form_field}>
+            <div className={styles.prefix}>
+               <img className={styles.svg} src='/auth/mail.svg' alt="" />
+            </div>
+            <input className={styles.input} type="text" placeholder='* Почта' value={email} onChange={(e) => setEmail(e.target.value)} />
+         </div>
+         <div className={styles.form_field}>
+            <div className={styles.prefix}>
+               <img className={styles.svg} src='/auth/lock.svg' alt="" />
+            </div>
+            <input className={styles.input} type="password" placeholder='* Пароль' value={password} onChange={(e) => setPassword(e.target.value)} />
+         </div>
+
+         <div className={styles.cont}>
+            <button className={styles.btn} onClick={() => onSubmit()}>Зарегистрироваться</button>
+            <p className={styles.answer}>Есть аккаунт? <Link href="/authorize" className={styles.link}>Авторизируйся</Link>
+            </p>
+         </div>
+
+      </motion.div >
+   </div>
 }
 
 export default RegistrationForm

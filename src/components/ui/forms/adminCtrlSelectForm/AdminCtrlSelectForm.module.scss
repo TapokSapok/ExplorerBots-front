@@ -5,7 +5,14 @@
    margin: 7% auto;
    border-radius: 10px;
 
+   .title {
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+   }
+
    .link {
+      // text-align: center;
       display: inline-block;
       color: rgb(152, 152, 152);
       width: 310px;

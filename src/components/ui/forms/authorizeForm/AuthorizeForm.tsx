@@ -31,36 +31,38 @@ const AuthorizeForm: FC = () => {
    }
 
 
-   return <motion.div className={styles.form}
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.1 }}
-   >
+   return <div className={styles.screen}>
+      <motion.div className={styles.form}
+         initial={{ y: 20, opacity: 0 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.1 }}
+      >
 
-      <div className={styles.title_container}>
-         <p className={styles.title}>Авторизация</p>
-      </div>
-
-      <div className={styles.form_field}>
-         <div className={styles.prefix}>
-            <img className={styles.svg} src='/auth/mail.svg' alt="Нету изображения" />
+         <div className={styles.title_container}>
+            <p className={styles.title}>Авторизация</p>
          </div>
-         <input className={styles.input} type="text" placeholder='* Почта' value={email} onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <div className={styles.form_field}>
-         <div className={styles.prefix}>
-            <img className={styles.svg} src='/auth/lock.svg' alt="Нету изображения" />
+
+         <div className={styles.form_field}>
+            <div className={styles.prefix}>
+               <img className={styles.svg} src='/auth/mail.svg' alt="Нету изображения" />
+            </div>
+            <input className={styles.input} type="text" placeholder='* Почта' value={email} onChange={(e) => setEmail(e.target.value)} />
          </div>
-         <input className={styles.input} type="password" placeholder='* Пароль' value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
+         <div className={styles.form_field}>
+            <div className={styles.prefix}>
+               <img className={styles.svg} src='/auth/lock.svg' alt="Нету изображения" />
+            </div>
+            <input className={styles.input} type="password" placeholder='* Пароль' value={password} onChange={(e) => setPassword(e.target.value)} />
+         </div>
 
-      <div className={styles.cont}>
-         <button className={styles.btn} onClick={() => onSubmit()}>Войти</button>
+         <div className={styles.cont}>
+            <button className={styles.btn} onClick={() => onSubmit()}>Войти</button>
 
-         <p className={styles.answer}>Нет аккаунта? <Link href="/registration" className={styles.link}> Зарегестрируйся</Link>
-         </p>
-      </div>
-   </motion.div >
+            <p className={styles.answer}>Нет аккаунта? <Link href="/registration" className={styles.link}> Зарегестрируйся</Link>
+            </p>
+         </div>
+      </motion.div >
+   </div>
 }
 
 export default AuthorizeForm
