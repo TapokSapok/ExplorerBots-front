@@ -4,4 +4,106 @@
    background: rgb(20, 20, 20);
    margin: 100px auto 0;
    border-radius: 10px;
+
+   display: flex;
+   justify-content: space-between;
+
+
+   .left_panel {
+      margin-top: 10px;
+      margin-left: 40px;
+      color: rgb(189, 189, 189);
+
+      .username_container {
+         margin-top: 5px;
+         display: flex;
+         background: #101010;
+         border-radius: 5px;
+         padding: 3px;
+         padding-top: 0;
+
+         .edit_username {
+            cursor: pointer;
+            margin-top: 4px;
+            margin-left: 5px;
+            color: gray;
+            transition: .2s;
+
+            &:hover {
+               color: rgb(255, 109, 13)
+            }
+         }
+
+         .username {
+            font-size: 22px;
+            font-weight: 500;
+         }
+      }
+
+      .email_container {
+         margin-top: 5px;
+         display: flex;
+         background: #101010;
+         border-radius: 5px;
+         padding: 4px;
+         padding-top: 0;
+
+
+         .email {
+            color: rgb(152, 152, 152);
+         }
+      }
+
+   }
+
+   .right_panel {
+      margin-top: 10px;
+      margin-right: 10px;
+      color: rgb(189, 189, 189);
+      font-size: 18px;
+
+
+      .role_container {
+         display: flex;
+         background: #101010;
+         border-radius: 5px;
+         padding: 5px;
+         padding-top: 0;
+
+         .edit_role {
+            cursor: pointer;
+            margin-top: 4px;
+            margin-left: 5px;
+            color: gray;
+            transition: .2s;
+
+            &:hover {
+               color: rgb(255, 109, 13)
+            }
+         }
+      }
+
+      .balance_container {
+         margin-top: 5px;
+         display: flex;
+         background: #101010;
+         border-radius: 5px;
+         padding: 5px;
+         padding-top: 0;
+         justify-content: flex-end;
+
+
+         .edit_balance {
+            cursor: pointer;
+            margin-top: 4px;
+            margin-left: 5px;
+            color: gray;
+            transition: .2s;
+
+            &:hover {
+               color: rgb(255, 109, 13)
+            }
+         }
+      }
+   }
 }

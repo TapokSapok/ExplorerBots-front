@@ -1,7 +1,7 @@
 
 import Layout from '@/components/layout/Layout'
 import AdminUserItem from '@/components/ui/adminUserItem/AdminUserItem'
-import BackButton from '@/components/ui/buttons/BackButton'
+import BackButton from '@/components/ui/buttons/BackButton/BackButton'
 import { IFullUser } from '@/interfaces/user.interface'
 import { FC, PropsWithChildren, useEffect, useState } from 'react'
 import styles from './AdminPanelUsers.module.scss'

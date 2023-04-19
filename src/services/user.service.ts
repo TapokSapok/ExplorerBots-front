@@ -29,10 +29,6 @@ export const UserService = {
 
       return this.tokenDecode(data.token)
    },
-   async getAllUsers() {
-      const { data } = await instance.get('/users')
-      return data
-   },
    async getUserById(id: number) {
       const { data } = await instance.get(`/users/${id}`)
       return data

@@ -7,16 +7,18 @@
 
       .info {
          margin-left: 10px;
+         text-align: center;
 
          .username {
-            color: rgb(152, 152, 152);
-            font-size: 18px;
+            color: rgb(255, 109, 13);
+            font-size: 20px;
             margin: 0;
          }
 
          .balance {
             color: rgb(189, 189, 189);
-            font-size: 13px;
+            font-size: 16px;
+
          }
       }
 

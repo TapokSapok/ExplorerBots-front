@@ -16,3 +16,18 @@ export interface IUser {
    balance: number
    role: string
 }
+
+export interface ChangeUsernameDto {
+   id: number
+   username: string
+}
+
+export interface ChangeRoleDto {
+   id: number
+   role: string
+}
+
+export interface BalanceDifferenceDto {
+   id: number
+   balanceDifference: number
+}

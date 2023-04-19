@@ -21,7 +21,7 @@ const NavProfile: FC = () => {
    return <div className={styles.profile}>
       {userData ?
          <div className={styles.profile_container} onClick={() => setShowProfile(!showProfile)} style={showProfile ? { marginTop: '2px' } : {}}>
-            <img className={styles.picture} src="https://cs8.pikabu.ru/post_img/2016/03/01/7/1456831941127977028.jpg" alt="" />
+            {/* <img className={styles.picture} src="https://cs8.pikabu.ru/post_img/2016/03/01/7/1456831941127977028.jpg" alt="" /> */}
             <div className={styles.info}>
                <p className={styles.username}>{userData.username}</p>
                <span className={styles.balance}>{userData.balance} ₽</span>
